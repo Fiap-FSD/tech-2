@@ -21,4 +21,4 @@ RUN echo "API_SECRET=${API_SECRET}" > .env
 
 EXPOSE 3000
 
-CMD ["node", "src/server.js"]
+CMD ["npm", "sstart"]
