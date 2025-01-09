@@ -8,7 +8,7 @@ services:
       args:
         MONGO_URI: ${MONGO_URI}
         API_SECRET: ${API_SECRET}
-    container_name: api-container-new
+    container_name: api-container-tech2
     ports:
       - "3000:3000"
     environment:
@@ -23,7 +23,7 @@ services:
 
   mongo:
     image: mongo:5.0
-    container_name: mongo-container-new
+    container_name: mongo-container-tech2
     ports:
       - "27017:27017"
     volumes:
