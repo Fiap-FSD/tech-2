@@ -39,9 +39,12 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
+
 // Importando as rotas
 const postRoutes = require('./src/routes/post.routes');
 app.use('/posts', postRoutes);
+
+
 
 // Iniciando o servidor
 app.listen(PORT, () => {
