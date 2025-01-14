@@ -1,6 +1,8 @@
 <p align="center">
-  <a href="https://on.fiap.com.br/" target="blank"><img src="/theme/fiap/postech/pos-tech.png" width="120" /></a>
+  ![Logo FIAP](https://on.fiap.com.br//theme/fiap/postech/pos-tech.png)
 </p>
+
+
 
 # Refatoração do Back-End do Blog Post
 
