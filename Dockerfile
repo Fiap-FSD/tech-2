@@ -21,4 +21,5 @@ RUN echo "API_SECRET=${API_SECRET}" > .env
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
+
