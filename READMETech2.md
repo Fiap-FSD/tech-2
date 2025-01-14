@@ -1,5 +1,5 @@
 <p align="center">
-  ![Logo FIAP](https://on.fiap.com.br//theme/fiap/postech/pos-tech.png)
+  ![Logo FIAP](https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg)
 </p>
 
 
