@@ -1,5 +1,7 @@
+
+
 <p align="center">
-  <img src="https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg" width="700" /></a>
+  <img src="https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg" width="300" /></a>
 </p>
 
 
