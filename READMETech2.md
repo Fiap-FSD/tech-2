@@ -1,5 +1,5 @@
 <p align="center">
-  ![Logo FIAP](https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg)
+  <img src="https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg" width="120" /></a>
 </p>
 
 
