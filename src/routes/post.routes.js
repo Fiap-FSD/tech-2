@@ -60,7 +60,7 @@ const router = express.Router();
  */
 router.get('/', async (req, res) => {
   try {
-    console.log("Buscando todos os posts");
+    console.log('Buscando todos os posts');
     const posts = await Post.find();
     res.json(posts);
   } catch (err) {
@@ -131,7 +131,7 @@ router.post('/', async (req, res) => {
 router.get('/buscar', async (req, res) => {
   const { q } = req.query;
   try {
-    console.log("Buscando postagens por palavra-chave:", q);
+    console.log('Buscando postagens por palavra-chave:', q);
     const posts = await Post.find({
       $or: [
         { title: { $regex: q, $options: 'i' } },
@@ -143,7 +143,6 @@ router.get('/buscar', async (req, res) => {
     res.status(400).json({ error: 'Erro ao buscar postagens' });
   }
 });
-
 
 /**
  * @swagger
@@ -183,9 +182,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-
-
-
 /**
  * @swagger
  * /posts/atualiza/{id}:
@@ -222,7 +218,11 @@ router.put('/atualiza/:id', async (req, res) => {
   const { title, content } = req.body;
   try {
     console.log('Atualizando postagem:', req.params.id);
-    const updatedPost = await Post.findByIdAndUpdate(req.params.id, { title, content }, { new: true });
+    const updatedPost = await Post.findByIdAndUpdate(
+      req.params.id,
+      { title, content },
+      { new: true },
+    );
     if (!updatedPost) {
       return res.status(404).json({ error: 'Postagem não encontrada' });
     }
@@ -231,7 +231,6 @@ router.put('/atualiza/:id', async (req, res) => {
     res.status(400).json({ error: 'Erro ao atualizar a postagem' });
   }
 });
-
 
 /**
  * @swagger
@@ -266,8 +265,5 @@ router.delete('/delete/:id', async (req, res) => {
     res.status(400).json({ error: 'Erro ao excluir a postagem' });
   }
 });
-
-
-
 
 module.exports = router;

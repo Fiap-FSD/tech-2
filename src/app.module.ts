@@ -13,7 +13,7 @@ console.log(process.env.MONGO_URI);
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
-    PostModule
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],

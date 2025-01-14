@@ -8,12 +8,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Conectando ao MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('Conectado ao MongoDB!'))
-  .catch(err => console.error('Erro ao conectar ao MongoDB:', err));
+  .catch((err) => console.error('Erro ao conectar ao MongoDB:', err));
 
 // Middleware para analisar JSON
 app.use(express.json());
@@ -39,12 +40,9 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-
 // Importando as rotas
 const postRoutes = require('./src/routes/post.routes');
 app.use('/posts', postRoutes);
-
-
 
 // Iniciando o servidor
 app.listen(PORT, () => {
