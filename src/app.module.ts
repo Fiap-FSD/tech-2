@@ -4,6 +4,9 @@ import { AppService } from './app.service';
 import { PostModule } from './post/post.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
+
+console.log(process.env.MONGO_URI);
 
 @Module({
   imports: [
@@ -11,7 +14,12 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
-    PostModule
+    PostModule,
+    JwtModule.register({
+      global: true,
+      secret: process.env.API_SECRET,
+      signOptions: { expiresIn: '10m' },
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
