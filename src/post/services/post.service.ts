@@ -16,7 +16,7 @@ export class PostService {
     return post;
   }
 
-  async createPost(post) {
+  async createPost(post: IPost): Promise<IPost> {
     return this.postRepository.createPost(post);
   }
 

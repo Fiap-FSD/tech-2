@@ -32,7 +32,7 @@ type CreatePost = z.infer<typeof createPostSchema>;
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
-  //@UseGuards(AuthGuard)
+  @UseGuards(AuthGuard)
   @Get()
   async getAllPost(@Query('limit') limit: number, @Query('page') page: number) {
     return this.postService.getAllPost(limit, page);

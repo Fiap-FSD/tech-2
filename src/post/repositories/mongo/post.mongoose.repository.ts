@@ -14,10 +14,11 @@ export class PostMongooseRepository implements PostRepository {
   getPostById(postId: string): Promise<IPost> {
     return this.postModel.findById(postId).exec();
   }
-  async createPost(post: IPost): Promise<void> {
-    const createStock = new this.postModel(post);
+  async createPost(post: IPost): Promise<IPost> {
+    const createdPost = new this.postModel(post);
+    await createdPost.save();
 
-    await createStock.save();
+    return createdPost.toObject(); // Retorna o post salvo como objeto simples
   }
   async updatePost(postId: string, post: IPost): Promise<IPost> {
     const result = await this.postModel
