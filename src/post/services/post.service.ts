@@ -31,4 +31,9 @@ export class PostService {
     async deletePost(postId: string) {
         return this.postRepository.deletePost(postId);
     }
+
+    async searchPosts(keyword: string) {
+        return this.postRepository.searchPosts(keyword);
+    }
+    
 }
