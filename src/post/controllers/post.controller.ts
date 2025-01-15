@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
 import { PostService } from "../services/post.service";
 import { z } from "zod";
 import { ZodValidationPipe } from "src/shared/pipe/zod-validation.pipe";
@@ -23,6 +23,14 @@ export class PostController{
     ){}
 
     //@UseGuards(AuthGuard)
+    @Get('search')
+    async searchPosts(@Query('keyword') keyword: string) {
+        if (!keyword || keyword.trim() === '') {
+            throw new BadRequestException('Keyword must be provided');
+        }
+        return this.postService.searchPosts(keyword);
+    }
+
     @Get()
     async getAllPost(
         @Query('limit')limit: number, 
@@ -52,4 +60,5 @@ export class PostController{
     async deletePost(@Param('postId') postId: string) {
         return this.postService.deletePost(postId);
     }
+
 }
