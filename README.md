@@ -31,15 +31,17 @@ A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 
 - Docker: O Docker permitiu o empacotamento da aplicação e suas dependências em contêineres, garantindo consistência entre os ambientes de desenvolvimento e produção. O Docker Hub foi utilizado para armazenar e compartilhar as imagens dos contêineres.
 
-# Como rodar o projeto
+- Render: Foi utilizado o Render como plataforma de hospedagem, o que simplificou o processo de deploy e gerenciamento da aplicação. O Render forneceu uma infraestrutura que permitiu que a equipe se concentrasse no desenvolvimento, sem se preocupar com a administração de servidores. O uso do Render foi fundamental para otimizar o fluxo de trabalho, garantindo agilidade no deploy e confiabilidade na execução da aplicação.
 
-## Pré-requisitos
+## Como rodar o projeto
+
+### Pré-requisitos
 
 - Node.js instalado (versão recomendada: 16.x ou superior).
 - Docker instalado.
 - MongoDB rodando localmente ou utilizando uma instância em nuvem.
 
-## Passos:
+### Passos:
 
 #### Clone este repositório:
 
@@ -74,11 +76,11 @@ docker run -p 3000:3000 nome-da-imagem
 docker pull fiapfsd/blog-posts
 ```
 
-# APIs
+## APIs
 
 Utilizar APIs para criar o backend de um sistema de blog post oferece uma série de vantagens que tornam a aplicação mais escalável, flexível e fácil de manter. Abaixo são apresentadas as requisições utilizadas pelo grupo: 
 
-### URL
+#### URL
 
 A URL base para todas as requisições da API é a seguinte:
 
@@ -86,54 +88,60 @@ A URL base para todas as requisições da API é a seguinte:
   https://blog-post-hori.onrender.com/
 ```
 
-### `GET All` - Obter todas as postagens
+
+- ##### GET All - Obter todas as postagens
 
 Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna uma lista completa de posts armazenados no banco de dados.
 
-``http
-  GET API/post/
-``
-###  `Get Search` - Buscar postagens
+```http
+  GET URL/post/
+```
+
+- #####  Get Search - Buscar postagens
 
 Este endpoint é utilizado para realizar uma pesquisa por posts com base em um critério específico (título ou conteúdo).
 
-``http
-  GET API/post/search/id
-``
-### `Get By Id` - Obter postagem específica
+```http
+  GET URL/post/search/id
+```
+
+- ##### Get By Id - Obter postagem específica
 
 Este endpoint é utilizado para recuperar uma postagem específica com base no ID fornecido.
 
-``http
-  GET API/post/id
-``
+```http
+  GET URL/post/id
+```
 
-### `Post` - Criar nova postagem
+- ##### Post - Criar nova postagem
 
 Este endpoint é utilizado para criar uma nova postagem no blog.
 
-``http
-  POST API/post
-``
+```http
+  POST URL/post
+```
 
-### `Put` - Editar postagem existente
+- ##### Put - Editar postagem existente
 
 Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID da postagem a ser atualizada.
 
-``http
-  PUT API/post/id
-``
-### `Delete` - Excluir postagem
+```http
+  PUT URL/post/id
+```
+
+- ##### Delete - Excluir postagem
 
 Este endpoint é utilizado para excluir uma postagem do blog.
 
-``http
-  DELETE API/post/id
-``
+```http
+  DELETE URL/post/id
+```
 
+## Conclusão
 
-| Parâmetro | Tipo     | Descrição                           |
-| :-------- | :------- | :---------------------------------- |
-| `api_key` | `string` | **Obrigatório**. A chave da sua API |
+A refatoração do back-end do Blog Post trouxe melhorias significativas, tornando o sistema mais moderno, escalável e fácil de manter. A migração da plataforma OutSystems para uma arquitetura baseada em Node.js, NestJS, REST APIs e MongoDB foi um grande avanço, proporcionando mais flexibilidade e controle no desenvolvimento.
 
+O uso de Docker e GitHub facilitou o gerenciamento do código e a colaboração entre os desenvolvedores, além de garantir consistência nos diferentes ambientes. As APIs RESTful ajudaram a separar o front-end do back-end, o que trouxe agilidade e facilitou a integração com outras plataformas.
+
+No entanto, o desenvolvimento não foi isento de desafios. A vinculação de várias tecnologias como Docker, MongoDB e Node.js exigiu um cuidado especial para garantir que todos os componentes funcionassem de forma integrada. A configuração do MongoDB e a criação de um ambiente Docker compatível com o sistema foram algumas das dificuldades encontradas, exigindo ajustes contínuos. Apesar desses desafios, a refatoração resultou em uma aplicação mais robusta e bem estruturada.
 
