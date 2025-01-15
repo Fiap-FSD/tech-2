@@ -9,10 +9,8 @@ const createPostSchema = z.object({
     title: z.string(),
     intro: z.string(),
     content: z.string(),
-    imageUrl: z.string(),
-    videoUrl: z.string(),
-    createdAt: z.date(),
-    UpdatedAt: z.date(),
+    imageUrl: z.string().optional(),
+    videoUrl: z.string().optional(),
 });
 
 type CreatePost = z.infer<typeof createPostSchema>;
@@ -39,15 +37,15 @@ export class PostController{
 
     @UsePipes(new ZodValidationPipe(createPostSchema))
     @Post()
-    async createPost(@Body() {title, content, intro, imageUrl, videoUrl, createdAt, UpdatedAt}: CreatePost) {
-        return this.postService.createPost({title, content, intro, imageUrl, videoUrl, createdAt, UpdatedAt});
+    async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost) {
+        return this.postService.createPost({title, content, intro, imageUrl, videoUrl});
     }
 
     @Put(':postId')
     async updatePost(
         @Param('postId') postId: string,
-        @Body(new ZodValidationPipe(createPostSchema)) {title, content, intro, imageUrl, videoUrl, createdAt, UpdatedAt}: CreatePost) {
-        return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl, createdAt, UpdatedAt});
+        @Body(new ZodValidationPipe(createPostSchema)) {title, content, intro, imageUrl, videoUrl}: CreatePost) {
+        return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl});
     }
 
     @Delete(':postId')

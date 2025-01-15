@@ -4,7 +4,7 @@ import mongoose, { HydratedDocument } from "mongoose";
 
 export type PostDocument = HydratedDocument<Post>;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Post implements IPost {
 
     @Prop({type: mongoose.Schema.Types.ObjectId})
@@ -19,10 +19,6 @@ export class Post implements IPost {
     imageUrl: string;
     @Prop()
     videoUrl: string;
-    @Prop()
-    createdAt: Date;
-    @Prop()
-    UpdatedAt: Date;
 }
 
 export const PostSchema = SchemaFactory.createForClass(Post);

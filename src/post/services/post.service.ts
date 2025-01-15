@@ -22,8 +22,11 @@ export class PostService {
     }
 
     async updatePost(postId: string, post: IPost) {
-        return this.postRepository.updatePost(postId, post);
+        const updatedPost = await this.postRepository.updatePost(postId, post);
+        if (!updatedPost) throw new NotFoundException('Post not found');
+        return updatedPost;
     }
+    
 
     async deletePost(postId: string) {
         return this.postRepository.deletePost(postId);

@@ -5,6 +5,4 @@ export interface IPost {
     content: string;
     imageUrl?: string;
     videoUrl?: string;
-    createdAt: Date;
-    UpdatedAt?: Date;
 }
