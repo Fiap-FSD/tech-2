@@ -82,40 +82,36 @@ docker pull fiapfsd/blog-posts
   https://blog-post-hori.onrender.com/
 ```
 
-## Get All - usado para fazer as requisições de todas as postagens
-```http
+### Get All - usado para fazer as requisições de todas as postagens
+``http
   GET API/post/
-```
-## Get Search - usado para fazer pesquisa das postagens
-```http
+``
+### Get Search - usado para fazer pesquisa das postagens
+``http
   GET API/post/search/id
-```
-## Get By Id - usado para fazer as requisições de uma postagem específica
-```http
+``
+### Get By Id - usado para fazer as requisições de uma postagem específica
+``http
   GET API/post/id
-```
+``
 
-## Post - utilizado para fazer postagens no blog
-```http
+### Post - utilizado para fazer postagens no blog
+``http
   POST API/post
-```
+``
 
-## Put - utilizado para fazer edições das postagens
-```http
+### Put - utilizado para fazer edições das postagens
+``http
   POST API/post/id
-```
-## Delete - usado para deletar uma postagem
-```http
+``
+### Delete - usado para deletar uma postagem
+``http
   DELETE API/post/id
-```
+``
 
 
 | Parâmetro | Tipo     | Descrição                           |
 | :-------- | :------- | :---------------------------------- |
 | `api_key` | `string` | **Obrigatório**. A chave da sua API |
 
-#### Retorna um item
 
-```http
-  GET /api/items/${id}
-```
