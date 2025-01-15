@@ -74,37 +74,59 @@ docker run -p 3000:3000 nome-da-imagem
 docker pull fiapfsd/blog-posts
 ```
 
-## Documentação da API
+# APIs
 
-#### URL
+Utilizar APIs para criar o backend de um sistema de blog post oferece uma série de vantagens que tornam a aplicação mais escalável, flexível e fácil de manter. Abaixo são apresentadas as requisições utilizadas pelo grupo: 
+
+### URL
+
+A URL base para todas as requisições da API é a seguinte:
 
 ```http
   https://blog-post-hori.onrender.com/
 ```
 
-### Get All - usado para fazer as requisições de todas as postagens
+### `GET All` - Obter todas as postagens
+
+Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna uma lista completa de posts armazenados no banco de dados.
+
 ``http
   GET API/post/
 ``
-### Get Search - usado para fazer pesquisa das postagens
+###  `Get Search` - Buscar postagens
+
+Este endpoint é utilizado para realizar uma pesquisa por posts com base em um critério específico (título ou conteúdo).
+
 ``http
   GET API/post/search/id
 ``
-### Get By Id - usado para fazer as requisições de uma postagem específica
+### `Get By Id` - Obter postagem específica
+
+Este endpoint é utilizado para recuperar uma postagem específica com base no ID fornecido.
+
 ``http
   GET API/post/id
 ``
 
-### Post - utilizado para fazer postagens no blog
+### `Post` - Criar nova postagem
+
+Este endpoint é utilizado para criar uma nova postagem no blog.
+
 ``http
   POST API/post
 ``
 
-### Put - utilizado para fazer edições das postagens
+### `Put` - Editar postagem existente
+
+Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID da postagem a ser atualizada.
+
 ``http
-  POST API/post/id
+  PUT API/post/id
 ``
-### Delete - usado para deletar uma postagem
+### `Delete` - Excluir postagem
+
+Este endpoint é utilizado para excluir uma postagem do blog.
+
 ``http
   DELETE API/post/id
 ``
