@@ -3,8 +3,8 @@ import { PostModule } from './post/post.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-
-console.log(process.env.MONGO_URI);
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +12,8 @@ console.log(process.env.MONGO_URI);
       isGlobal: true,
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
+    UserModule,
+    AuthModule,
     PostModule,
     JwtModule.register({
       global: true,
