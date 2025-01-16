@@ -7,14 +7,14 @@ import {
   Post,
   Put,
   Query,
-  UseGuards,
+  // UseGuards,
   UseInterceptors,
   UsePipes,
 } from '@nestjs/common';
 import { PostService } from '../services/post.service';
 import { z } from 'zod';
 import { ZodValidationPipe } from 'src/shared/pipe/zod-validation.pipe';
-import { AuthGuard } from 'src/shared/guards/auth.guard';
+// import { AuthGuard } from 'src/shared/guards/auth.guard';
 import { LoggingInterceptor } from 'src/shared/interceptors/logging.interceptor';
 
 const createPostSchema = z.object({
@@ -32,7 +32,7 @@ type CreatePost = z.infer<typeof createPostSchema>;
 export class PostController {
   constructor(private readonly postService: PostService) {}
 
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Get()
   async getAllPost(@Query('limit') limit: number, @Query('page') page: number) {
     return this.postService.getAllPost(limit, page);
