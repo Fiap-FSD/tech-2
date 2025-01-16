@@ -113,8 +113,23 @@ A URL base para todas as requisições da API é a seguinte:
   https://blog-post-hori.onrender.com/
 ```
 
+- ##### AuthController_login - Utilizado para autenticar usuário
 
-- ##### GET All - Obter todas as postagens
+Este endpoint é utilizado para realizar o login de um usuário já cadastrado e obter o token necessário para realizar operações protegidas (como **POST**, **PUT** e **DELETE**) na API.  
+
+```
+  POST URL/auth/login
+```
+
+- ##### AuthController_register - Utilizado para criar usuário
+
+Este endpoint é utilizado para criar um novo usuário no sistema. Ele recebe o email e senha (criptografada) do usuário e cria um registro no banco de dados.
+
+```
+  POST URL/auth/register
+```
+
+- ##### PostController_getAllPost - Obter todas as postagens
 
 Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna uma lista completa de posts armazenados no banco de dados.
 
@@ -122,7 +137,7 @@ Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna um
   GET URL/post/
 ```
 
-- #####  Get Search - Buscar postagens
+- #####  PostController_searchPosts - Buscar postagens
 
 Este endpoint é utilizado para realizar uma pesquisa por posts com base em um critério específico (título ou conteúdo).
 
@@ -130,7 +145,7 @@ Este endpoint é utilizado para realizar uma pesquisa por posts com base em um c
   GET URL/post/search/id
 ```
 
-- ##### Get By Id - Obter postagem específica
+- ##### PostController_getPostById - Obter postagem específica
 
 Este endpoint é utilizado para recuperar uma postagem específica com base no ID fornecido.
 
@@ -138,7 +153,7 @@ Este endpoint é utilizado para recuperar uma postagem específica com base no I
   GET URL/post/id
 ```
 
-- ##### Post - Criar nova postagem
+- ##### PostController_createPost - Criar nova postagem
 
 Este endpoint é utilizado para criar uma nova postagem no blog.
 
@@ -146,7 +161,7 @@ Este endpoint é utilizado para criar uma nova postagem no blog.
   POST URL/post
 ```
 
-- ##### Put - Editar postagem existente
+- ##### PostController_updatePost - Editar postagem existente
 
 Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID da postagem a ser atualizada.
 
@@ -154,7 +169,7 @@ Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID d
   PUT URL/post/id
 ```
 
-- ##### Delete - Excluir postagem
+- ##### PostController_deletePost - Excluir postagem
 
 Este endpoint é utilizado para excluir uma postagem do blog.
 
