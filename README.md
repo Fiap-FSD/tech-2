@@ -47,7 +47,7 @@ A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 
 ```bash
 git clone https://github.com/Fiap-FSD/tech-2.git
-cd tech-2
+cd blog-posts
 ```
 
 #### Instale as dependências:
@@ -56,11 +56,29 @@ cd tech-2
 npm install
 ```
 
-#### Configure o MongoDB:
+#### Configure o ambiente:
 
-Configure a URL do banco de dados MongoDB no arquivo de configuração do projeto.
+```bash
+MONGO_URI=mongodb://localhost:27017/blog-posts
+JWT_SECRET= user_key
+PORT=3000
+```
 
-#### Execute o servidor localmente:
+#### Inicie o MongoDB
+
+- Se estiver utilizando o MongoDB local, inicie com o comando:
+```bash
+mongodb
+```
+
+- Caso use uma URL remota, ajuste o valor de MONGO_URI no arquivo .env
+
+
+#### Execute o programa:
+
+```bash
+npm run build
+```
 
 ```bash
 npm start
@@ -70,10 +88,17 @@ npm start
 
 Para construir e rodar a aplicação com Docker, utilize os seguintes comandos:
 
+- Verifique o docker e docker compose
+
 ```bash
-docker build -t nome-da-imagem .
-docker run -p 3000:3000 nome-da-imagem
-docker pull fiapfsd/blog-posts
+docker --version
+docker-compose --version
+```
+- Contrua e inicie os conteiners
+
+```bash
+docker-compose build
+docker-compose up
 ```
 
 ## APIs
