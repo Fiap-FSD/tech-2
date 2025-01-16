@@ -4,6 +4,7 @@ import { z } from "zod";
 import { ZodValidationPipe } from "src/shared/pipe/zod-validation.pipe";
 import { AuthGuard } from "src/shared/guards/auth.guard";
 import { LoggingInterceptor } from "src/shared/interceptors/logging.interceptor";
+import { ApiBearerAuth } from "@nestjs/swagger";
 
 
 const createPostSchema = z.object({
@@ -43,13 +44,15 @@ export class PostController{
         return this.postService.getPostById(postId);
     }
 
+    @ApiBearerAuth()
     @UseGuards(AuthGuard)
     @UsePipes(new ZodValidationPipe(createPostSchema))
     @Post()
     async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost) {
         return this.postService.createPost({title, content, intro, imageUrl, videoUrl});
     }
-
+    
+    @ApiBearerAuth()
     @UseGuards(AuthGuard)
     @Put(':postId')
     async updatePost(
@@ -58,6 +61,7 @@ export class PostController{
         return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl});
     }
 
+    @ApiBearerAuth()
     @UseGuards(AuthGuard)
     @Delete(':postId')
     async deletePost(@Param('postId') postId: string) {
