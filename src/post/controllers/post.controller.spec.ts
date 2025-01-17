@@ -1,8 +1,14 @@
 import { PostService } from '../services/post.service';
 import { Test, TestingModule } from '@nestjs/testing';
-
 import { BadRequestException } from '@nestjs/common';
 import { PostController } from './post.controller';
+
+// Mocking the AuthGuard globally
+jest.mock('../../shared/guards/auth.guard', () => ({
+  AuthGuard: jest.fn(() => ({
+    canActivate: jest.fn(() => true),
+  })),
+}));
 
 // Mocking the PostService
 const mockPostService = {
