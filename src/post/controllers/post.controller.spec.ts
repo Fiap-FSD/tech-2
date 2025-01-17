@@ -1,4 +1,4 @@
-import { PostService } from './../services/post.service';
+import { PostService } from '../services/post.service';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { BadRequestException } from '@nestjs/common';
