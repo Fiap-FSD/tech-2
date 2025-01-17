@@ -117,7 +117,7 @@ A URL base para todas as requisições da API é a seguinte:
 
 Este endpoint é utilizado para realizar o login de um usuário já cadastrado e obter o token necessário para realizar operações protegidas (como **POST**, **PUT** e **DELETE**) na API.  
 
-```
+```http
   POST URL/auth/login
 ```
 
@@ -125,7 +125,7 @@ Este endpoint é utilizado para realizar o login de um usuário já cadastrado e
 
 Este endpoint é utilizado para criar um novo usuário no sistema. Ele recebe o email e senha (criptografada) do usuário e cria um registro no banco de dados.
 
-```
+```http
   POST URL/auth/register
 ```
 
