@@ -38,16 +38,16 @@ A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 
 A arquitetura do projeto segue o padrão de **API RESTful**, que permite interações simples e claras entre o cliente e o servidor. A principal divisão da aplicação é composta por:
 
-- **NestJS**: Framework para o desenvolvimento do back-end, que organiza o código em módulos e controladores, facilitando a manutenção e expansão.
+- **NestJS**: Framework para o desenvolvimento do back-end, que organiza o código em módulos e controladores, facilitando a manutenção, escalabilidade e reutilização de componentes.
 - **MongoDB**: Banco de dados NoSQL utilizado para persistir as postagens e informações de usuários de forma flexível.
 - **Docker**: Utilizado para empacotar a aplicação e suas dependências, garantindo consistência entre os ambientes de desenvolvimento e produção.
 - **Render**: Plataforma de hospedagem utilizada para o deploy da aplicação, permitindo o gerenciamento simplificado de servidores e escalabilidade.
 
-A arquitetura segue o padrão **Model-View-Controller (MVC)**, com:
+A arquitetura segue o padrão **NestJS**, organizada em **Controller, Providers, Modules**, com:
 
-- **Model**: Definição dos esquemas de dados (usando Mongoose para MongoDB).
-- **View**: A interação com a API não possui uma camada de apresentação, pois a aplicação é uma API RESTful.
-- **Controller**: Responsáveis pela lógica de interação entre as requisições HTTP e o banco de dados.
+- **Controller**: Responsável pelo processamento das requisições HTTP e retorno de uma resposta para o client.
+- **Providers**: São classes que executam a lógica central da aplicação. Podem ser de vários tipos de classes, como services, repositories e helpers.
+- **Modules**: Organizam a aplicação de maneira modular e registram os componentes que ela utiliza. E cada módulo gerencia um conjunto específico de responsabilidades e pode importar ou exportar outros módulos para compartilhar funcionalidades.
   
 
 ## Como rodar o projeto
