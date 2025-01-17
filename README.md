@@ -47,7 +47,7 @@ A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 
 ```bash
 git clone https://github.com/Fiap-FSD/tech-2.git
-cd tech-2
+cd blog-posts
 ```
 
 #### Instale as dependências:
@@ -56,11 +56,29 @@ cd tech-2
 npm install
 ```
 
-#### Configure o MongoDB:
+#### Configure o ambiente:
 
-Configure a URL do banco de dados MongoDB no arquivo de configuração do projeto.
+```bash
+MONGO_URI=mongodb://localhost:27017/blog-posts
+JWT_SECRET= user_key
+PORT=3000
+```
 
-#### Execute o servidor localmente:
+#### Inicie o MongoDB
+
+- Se estiver utilizando o MongoDB local, inicie com o comando:
+```bash
+mongodb
+```
+
+- Caso use uma URL remota, ajuste o valor de MONGO_URI no arquivo .env
+
+
+#### Execute o programa:
+
+```bash
+npm run build
+```
 
 ```bash
 npm start
@@ -70,10 +88,17 @@ npm start
 
 Para construir e rodar a aplicação com Docker, utilize os seguintes comandos:
 
+- Verifique o docker e docker compose
+
 ```bash
-docker build -t nome-da-imagem .
-docker run -p 3000:3000 nome-da-imagem
-docker pull fiapfsd/blog-posts
+docker --version
+docker-compose --version
+```
+- Construa e inicie os conteiners
+
+```bash
+docker-compose build
+docker-compose up
 ```
 
 ## APIs
@@ -88,8 +113,23 @@ A URL base para todas as requisições da API é a seguinte:
   https://blog-post-hori.onrender.com/
 ```
 
+- ##### AuthController_login - Utilizado para autenticar usuário
 
-- ##### GET All - Obter todas as postagens
+Este endpoint é utilizado para realizar o login de um usuário já cadastrado e obter o token necessário para realizar operações protegidas (como **POST**, **PUT** e **DELETE**) na API.  
+
+```http
+  POST URL/auth/login
+```
+
+- ##### AuthController_register - Utilizado para criar usuário
+
+Este endpoint é utilizado para criar um novo usuário no sistema. Ele recebe o email e senha (criptografada) do usuário e cria um registro no banco de dados.
+
+```http
+  POST URL/auth/register
+```
+
+- ##### PostController_getAllPost - Obter todas as postagens
 
 Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna uma lista completa de posts armazenados no banco de dados.
 
@@ -97,7 +137,7 @@ Este endpoint é utilizado para obter todas as postagens do blog. Ele retorna um
   GET URL/post/
 ```
 
-- #####  Get Search - Buscar postagens
+- #####  PostController_searchPosts - Buscar postagens
 
 Este endpoint é utilizado para realizar uma pesquisa por posts com base em um critério específico (título ou conteúdo).
 
@@ -105,7 +145,7 @@ Este endpoint é utilizado para realizar uma pesquisa por posts com base em um c
   GET URL/post/search/id
 ```
 
-- ##### Get By Id - Obter postagem específica
+- ##### PostController_getPostById - Obter postagem específica
 
 Este endpoint é utilizado para recuperar uma postagem específica com base no ID fornecido.
 
@@ -113,7 +153,7 @@ Este endpoint é utilizado para recuperar uma postagem específica com base no I
   GET URL/post/id
 ```
 
-- ##### Post - Criar nova postagem
+- ##### PostController_createPost - Criar nova postagem
 
 Este endpoint é utilizado para criar uma nova postagem no blog.
 
@@ -121,7 +161,7 @@ Este endpoint é utilizado para criar uma nova postagem no blog.
   POST URL/post
 ```
 
-- ##### Put - Editar postagem existente
+- ##### PostController_updatePost - Editar postagem existente
 
 Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID da postagem a ser atualizada.
 
@@ -129,7 +169,7 @@ Este endpoint é utilizado para editar uma postagem existente, fornecendo o ID d
   PUT URL/post/id
 ```
 
-- ##### Delete - Excluir postagem
+- ##### PostController_deletePost - Excluir postagem
 
 Este endpoint é utilizado para excluir uma postagem do blog.
 
@@ -144,3 +184,4 @@ A refatoração do back-end do Blog Post trouxe melhorias significativas, tornan
 O uso de Docker e GitHub facilitou o gerenciamento do código e a colaboração entre os desenvolvedores, além de garantir consistência nos diferentes ambientes. As APIs RESTful ajudaram a separar o front-end do back-end, o que trouxe agilidade e facilitou a integração com outras plataformas.
 
 No entanto, o desenvolvimento não foi isento de desafios. A vinculação de várias tecnologias como Docker, MongoDB e Node.js exigiu um cuidado especial para garantir que todos os componentes funcionassem de forma integrada. A configuração do MongoDB e a criação de um ambiente Docker compatível com o sistema foram algumas das dificuldades encontradas, exigindo ajustes contínuos. Apesar desses desafios, a refatoração resultou em uma aplicação mais robusta e bem estruturada.
+
