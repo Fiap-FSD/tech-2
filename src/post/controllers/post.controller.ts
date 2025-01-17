@@ -1,9 +1,11 @@
+import { LoggingInterceptor } from './../../shared/interceptors/logging.interceptor';
+
+import { ZodValidationPipe } from './../../shared/pipe/zod-validation.pipe';
 import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
 import { PostService } from "../services/post.service";
 import { z } from "zod";
-import { ZodValidationPipe } from "src/shared/pipe/zod-validation.pipe";
-import { AuthGuard } from "src/shared/guards/auth.guard";
-import { LoggingInterceptor } from "src/shared/interceptors/logging.interceptor";
+import { AuthGuard } from '@shared/guards/auth.guard';
+
 
 
 

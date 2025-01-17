@@ -27,7 +27,6 @@ export class PostService {
         return updatedPost;
     }
     
-
     async deletePost(postId: string) {
         return this.postRepository.deletePost(postId);
     }
