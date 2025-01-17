@@ -1,12 +1,10 @@
-import { LoggingInterceptor } from './../../shared/interceptors/logging.interceptor';
-
-import { ZodValidationPipe } from './../../shared/pipe/zod-validation.pipe';
 import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
 import { PostService } from "../services/post.service";
 import { z } from "zod";
-import { AuthGuard } from '@shared/guards/auth.guard';
-
-
+import { ZodValidationPipe } from "src/shared/pipe/zod-validation.pipe";
+import { AuthGuard } from "src/shared/guards/auth.guard";
+import { LoggingInterceptor } from "src/shared/interceptors/logging.interceptor";
+import { ApiBearerAuth } from "@nestjs/swagger";
 
 
 const createPostSchema = z.object({
@@ -26,7 +24,6 @@ export class PostController{
         private readonly postService: PostService
     ){}
 
-    //@UseGuards(AuthGuard)
     @Get('search')
     async searchPosts(@Query('keyword') keyword: string) {
         if (!keyword || keyword.trim() === '') {
@@ -47,12 +44,16 @@ export class PostController{
         return this.postService.getPostById(postId);
     }
 
+    @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @UsePipes(new ZodValidationPipe(createPostSchema))
     @Post()
     async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost) {
         return this.postService.createPost({title, content, intro, imageUrl, videoUrl});
     }
-
+    
+    @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @Put(':postId')
     async updatePost(
         @Param('postId') postId: string,
@@ -60,6 +61,8 @@ export class PostController{
         return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl});
     }
 
+    @ApiBearerAuth()
+    @UseGuards(AuthGuard)
     @Delete(':postId')
     async deletePost(@Param('postId') postId: string) {
         return this.postService.deletePost(postId);
