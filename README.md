@@ -81,27 +81,7 @@ JWT_SECRET= user_key
 PORT=3000
 ```
 
-#### Inicie o MongoDB
-
-- Se estiver utilizando o MongoDB local, inicie com o comando:
-```bash
-mongodb
-```
-
-- Caso use uma URL remota, ajuste o valor de MONGO_URI no arquivo .env
-
-
-#### Execute o programa:
-
-```bash
-npm run build
-```
-
-```bash
-npm start
-```
-
-#### Rodando com Docker:
+#### Rodando no Docker:
 
 Para construir e rodar a aplicação com Docker, utilize os seguintes comandos:
 
@@ -128,6 +108,18 @@ A URL base para todas as requisições da API é a seguinte:
 
 ```http
   https://blog-post-hori.onrender.com/
+```
+
+#### Manual da API
+
+As URLs do manual da API são as seguintes:
+
+```http
+  https://blog-post-hori.onrender.com/api
+```
+
+```http
+  https://blog-post-hori.onrender.com/docs
 ```
 
 - ##### AuthController_login - Utilizado para autenticar usuário
