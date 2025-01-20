@@ -75,6 +75,8 @@ npm install
 
 #### Configure o ambiente:
 
+Crie um arquivo `.env` na raiz do projeto e insira nele:
+
 ```bash
 MONGO_URI=mongodb://localhost:27017/blog-posts
 JWT_SECRET= user_key
