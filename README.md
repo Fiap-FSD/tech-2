@@ -67,20 +67,14 @@ git clone https://github.com/Fiap-FSD/tech-2.git
 cd blog-posts
 ```
 
-#### Instale as dependências:
-
-```bash
-npm install
-```
-
 #### Configure o ambiente:
 
 Crie um arquivo `.env` na raiz do projeto e insira nele:
 
 ```bash
-MONGO_URI=mongodb://localhost:27017/blog-posts
-JWT_SECRET= user_key
 PORT=3000
+API_SECRET=batman
+MONGO_URI=mongodb+srv://fiapfsd:SDHdwwa1MNK4GObi@blogposts.faa90.mongodb.net/?retryWrites=true&w=majority&appName=BlogPosts
 ```
 
 #### Rodando no Docker:
