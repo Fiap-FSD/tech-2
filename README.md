@@ -6,20 +6,20 @@
   <img src="https://github.com/Fiap-FSD/tech-2/blob/development/Fiap-logo.jpg" width="300" /></a>
 </p>
 
-# Refatoração do Back-End do Blog Post
+# ✨ Refatoração do Back-End do Blog Post
 
 Este documento descreve o processo de desenvolvimento do refatoramento da parte Back-End do blog post. A aplicação foi inicialmente desenvolvida utilizando a plataforma OutSystems. Para esta nova etapa, o back-end da aplicação foi refatorado utilizando Node.js, utilizando o framkework NestJS, REST APIs, GitHub, Docker e MongoDB para persistência de dados.
 
 Será apresentada a maneira de execução de cada step do projeto contendo informações cruciais sobre como configurar, usar e contribuir com o projeto.
 
-## Objetivos do Projeto
+## 🎯 Objetivos do Projeto
 
 - Refatorar o back-end da aplicação de blogging para professores, e alunos, utilizando Node.js.
 - Implementação de uma API RESTful com endpoints definidos para a criação, leitura, edição, exclusão e busca de postagens.
 - Utilizar MongoDB como banco de dados para persistência dos dados.
 - Utilizar Docker para garantir consistência, escalabilidade e facilitar o deploy do projeto.
 
-## Ferramentas Utilizadas
+## 🛠️ Ferramentas Utilizadas
 
 A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 
@@ -34,7 +34,7 @@ A equipe utilizou as seguintes ferramentas durante o desenvolvimento do projeto:
 - **Render**: Foi utilizado o Render como plataforma de hospedagem, o que simplificou o processo de deploy e gerenciamento da aplicação. O Render forneceu uma infraestrutura que permitiu que a equipe se concentrasse no desenvolvimento, sem se preocupar com a administração de servidores. O uso do Render foi fundamental para otimizar o fluxo de trabalho, garantindo agilidade no deploy e confiabilidade na execução da aplicação.
 
 
-## Arquitetura da Aplicação
+## 🏗️ Arquitetura da Aplicação
 
 A arquitetura do projeto segue o padrão de **API RESTful**, que permite interações simples e claras entre o cliente e o servidor. A principal divisão da aplicação é composta por:
 
@@ -50,7 +50,7 @@ A arquitetura segue o padrão **NestJS**, organizada em **Controller, Providers,
 - **Modules**: Organizam a aplicação de maneira modular e registram os componentes que ela utiliza. E cada módulo gerencia um conjunto específico de responsabilidades e pode importar ou exportar outros módulos para compartilhar funcionalidades.
   
 
-## Como rodar o projeto
+## 🚀 Como rodar o projeto
 
 ### Pré-requisitos
 
@@ -94,7 +94,7 @@ docker-compose build
 docker-compose up
 ```
 
-## APIs
+## 🌐 APIs
 
 Utilizar APIs para criar o backend de um sistema de blog post oferece uma série de vantagens que tornam a aplicação mais escalável, flexível e fácil de manter. Abaixo são apresentadas as requisições utilizadas pelo grupo: 
 
@@ -181,8 +181,10 @@ Este endpoint é utilizado para excluir uma postagem do blog.
 ```http
   DELETE URL/post/id
 ```
+## 🎥 Vídeo do Projeto
+👉 **[Link para o vídeo](https://youtu.be/ILa9iL7bAOs)**  
 
-## Conclusão
+## 📜 Conclusão
 
 A refatoração do back-end do Blog Post trouxe melhorias significativas, tornando o sistema mais moderno, escalável e fácil de manter. A migração da plataforma OutSystems para uma arquitetura baseada em NestJS, REST APIs e MongoDB foi um grande avanço, proporcionando mais flexibilidade e controle no desenvolvimento.
 
