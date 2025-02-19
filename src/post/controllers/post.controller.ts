@@ -98,6 +98,7 @@ export class PostController{
     async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost, @Request() req) {
         // Acessando o usuário autenticado da requisição
         const user = req.user;  // Aqui, assumimos que o nome do usuário está em req.user.name
+        console.log(user)
     
         // Passando o nome do usuário para o serviço
         return this.postService.createPost({title, content, intro, imageUrl, videoUrl}, user);
@@ -125,11 +126,11 @@ export class PostController{
     async updatePost(
         @Param('postId') postId: string,
         @Body() {title, content, intro, imageUrl, videoUrl}: CreatePost,
-        @Request() req  // Acessa o usuário autenticado
+        @Request() req  
     ) {
-        const user = req.user;  // Aqui, assumimos que o nome do usuário está em req.user.name
+        const user = req.user;  
     
-        // Passa o nome do usuário para o serviço de atualização
+        
         return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl}, user);
     }
 
