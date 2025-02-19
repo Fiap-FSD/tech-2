@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, Request, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
 import { PostService } from "../services/post.service";
 import { z } from "zod";
 import { ZodValidationPipe } from "../../shared/pipe/zod-validation.pipe";
@@ -11,6 +11,7 @@ import { UpdatePostDto } from '../dto/update-post.dto';
 
 const createPostSchema = z.object({
     title: z.string(),
+    author: z.string(),
     intro: z.string(),
     content: z.string(),
     imageUrl: z.string().optional(),
@@ -95,13 +96,8 @@ export class PostController{
         status: 201,
         description: 'A postagem foi criada com sucesso.',
     })
-    async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost, @Request() req) {
-        // Acessando o usuário autenticado da requisição
-        const user = req.user;  // Aqui, assumimos que o nome do usuário está em req.user.name
-        console.log(user)
-    
-        // Passando o nome do usuário para o serviço
-        return this.postService.createPost({title, content, intro, imageUrl, videoUrl}, user);
+    async createPost(@Body() {title, author, content, intro, imageUrl, videoUrl}) {
+        return this.postService.createPost({title, author,content, intro, imageUrl, videoUrl});
     }
     
     @ApiBearerAuth()
@@ -125,13 +121,9 @@ export class PostController{
     })
     async updatePost(
         @Param('postId') postId: string,
-        @Body() {title, content, intro, imageUrl, videoUrl}: CreatePost,
-        @Request() req  
+        @Body() {title, author, content, intro, imageUrl, videoUrl}: CreatePost,
     ) {
-        const user = req.user;  
-    
-        
-        return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl}, user);
+        return this.postService.updatePost(postId, {title, author, content, intro, imageUrl, videoUrl});
     }
 
     @ApiBearerAuth()
