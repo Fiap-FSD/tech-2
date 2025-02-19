@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put, Query, Request, UseGuards, UseInterceptors, UsePipes } from "@nestjs/common";
 import { PostService } from "../services/post.service";
 import { z } from "zod";
 import { ZodValidationPipe } from "../../shared/pipe/zod-validation.pipe";
@@ -95,8 +95,12 @@ export class PostController{
         status: 201,
         description: 'A postagem foi criada com sucesso.',
     })
-    async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost) {
-        return this.postService.createPost({title, content, intro, imageUrl, videoUrl});
+    async createPost(@Body() {title, content, intro, imageUrl, videoUrl}: CreatePost, @Request() req) {
+        // Acessando o usuário autenticado da requisição
+        const user = req.user;  // Aqui, assumimos que o nome do usuário está em req.user.name
+    
+        // Passando o nome do usuário para o serviço
+        return this.postService.createPost({title, content, intro, imageUrl, videoUrl}, user);
     }
     
     @ApiBearerAuth()
@@ -120,8 +124,13 @@ export class PostController{
     })
     async updatePost(
         @Param('postId') postId: string,
-        @Body(new ZodValidationPipe(createPostSchema)) {title, content, intro, imageUrl, videoUrl}: CreatePost) {
-        return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl});
+        @Body() {title, content, intro, imageUrl, videoUrl}: CreatePost,
+        @Request() req  // Acessa o usuário autenticado
+    ) {
+        const user = req.user;  // Aqui, assumimos que o nome do usuário está em req.user.name
+    
+        // Passa o nome do usuário para o serviço de atualização
+        return this.postService.updatePost(postId, {title, content, intro, imageUrl, videoUrl}, user);
     }
 
     @ApiBearerAuth()

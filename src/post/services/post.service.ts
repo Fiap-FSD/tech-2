@@ -17,11 +17,13 @@ export class PostService {
         return post;
     }
 
-    async createPost(post) {
+    async createPost(post, user) {
+        post.author = user.name;
         return this.postRepository.createPost(post);
     }
 
-    async updatePost(postId: string, post: IPost) {
+    async updatePost(postId: string, post: IPost, user) {
+        post.author = user.name;
         const updatedPost = await this.postRepository.updatePost(postId, post);
         if (!updatedPost) throw new NotFoundException('Post not found');
         return updatedPost;

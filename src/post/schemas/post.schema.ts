@@ -12,6 +12,8 @@ export class Post implements IPost {
     @Prop()
     title: string;
     @Prop()
+    author: string;
+    @Prop()
     intro: string;
     @Prop()
     content: string;

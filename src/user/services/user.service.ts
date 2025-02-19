@@ -8,7 +8,7 @@ export class UserService {
     constructor(private readonly userRepository: UserRepository) {}
 
     async createUser(createUserDto: CreateUserDto) {
-        const { email, password } = createUserDto;
+        const { email,name,password } = createUserDto;
 
         const existingUser = await this.userRepository.findByEmail(email);
         if (existingUser) {
@@ -19,6 +19,7 @@ export class UserService {
 
         return this.userRepository.create({
             email,
+            name,
             password: hashedPassword,
         });
     }
