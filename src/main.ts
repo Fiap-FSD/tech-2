@@ -7,6 +7,14 @@ import { setupRedoc } from './shared/middlewares/redoc.middleware';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new HttpExceptionFilter());
+
+  // Habilitar o CORS para aceitar qualquer origem e permitir o cabeçalho Authorization (Bearer Token)
+  app.enableCors({
+    origin: true,  // Permite qualquer origem (pode ser qualquer domínio)
+    methods: 'GET, POST, PUT, DELETE, PATCH', // Permite os métodos HTTP necessários
+    allowedHeaders: 'Content-Type, Authorization', // Permite os cabeçalhos necessários, incluindo o Authorization
+  });
+
   const config = new DocumentBuilder()
     .setTitle('Blog API')
     .setDescription('API de Blogging')
