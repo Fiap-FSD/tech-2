@@ -12,7 +12,7 @@ export class User extends Document {
     @Prop({ required: true })
     password: string;
 
-    @Prop({ default: 'user' })
+    @Prop({ required: true, enum: ['admin', 'user'] })
     role: string;
 }
 

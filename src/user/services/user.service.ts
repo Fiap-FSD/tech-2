@@ -8,11 +8,11 @@ export class UserService {
     constructor(private readonly userRepository: UserRepository) {}
 
     async createUser(createUserDto: CreateUserDto) {
-        const { email,name,password } = createUserDto;
+        const { email,name,password,role } = createUserDto;
 
         const existingUser = await this.userRepository.findByEmail(email);
         if (existingUser) {
-            throw new ConflictException('Email already in use');
+            throw new ConflictException('Este email já está em uso!');
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -21,10 +21,12 @@ export class UserService {
             email,
             name,
             password: hashedPassword,
+            role,
         });
     }
 
     async findByEmail(email: string) {
         return this.userRepository.findByEmail(email);
     }
+
 }
