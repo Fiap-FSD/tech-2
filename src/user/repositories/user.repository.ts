@@ -1,17 +1,12 @@
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
-import { User } from '../schemas/user.schema'; 
+import { CreateUserDto } from "../dto/create-user.dto";
+import { UpdateUserDto } from "../dto/update-user.dto";
+import { User } from "../schemas/user.schema";
 
-@Injectable()
-export class UserRepository {
-    constructor(@InjectModel(User.name) private readonly userModel: Model<User>) {}
-
-    async create(data: Partial<User>): Promise<User> {
-        return new this.userModel(data).save();
-    }
-
-    async findByEmail(email: string): Promise<User | null> {
-        return this.userModel.findOne({ email }).exec();
-    }
+export abstract class UserRepository {
+    abstract getAllUsers(): Promise<User[]>;
+    abstract getUserById(userId: string): Promise<User>;
+    abstract createUser(user: CreateUserDto): Promise<User>;
+    abstract updateUser(userId: string, user: UpdateUserDto): Promise<User>;
+    abstract deleteUser(userId: string): Promise<void>;
+    abstract findByEmail(email: string): Promise<User | null>;
 }
