@@ -58,9 +58,13 @@ export class UserService {
         return this.userRepository.findByEmail(email);
     }
 
-    async getAllUsers() {
+    async getAllUsers(role?: 'admin' | 'user') {
+        if (role) {
+            return this.userRepository.getUsersByRole(role);
+        }
         return this.userRepository.getAllUsers();
     }
+
 
     async getUserById(userId: string) {
         const user = await this.userRepository.getUserById(userId);

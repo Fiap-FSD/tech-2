@@ -8,6 +8,7 @@ import {
     UseGuards,
     UseInterceptors,
     UsePipes,
+    Query,
 } from '@nestjs/common';
 import { UserService } from '../services/user.service';
 import { AuthGuard } from '../../shared/guards/auth.guard';
@@ -22,9 +23,10 @@ export class UserController {
     constructor(private readonly userService: UserService) { }
 
     @Get()
-    async getAllUsers() {
-        return this.userService.getAllUsers();
+    async getAllUsers(@Query('role') role?: 'admin' | 'user') {
+        return this.userService.getAllUsers(role);
     }
+
 
     @Get(':userId')
     async getUserById(@Param('userId') userId: string) {

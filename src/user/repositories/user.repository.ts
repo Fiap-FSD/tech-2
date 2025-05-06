@@ -9,4 +9,5 @@ export abstract class UserRepository {
     abstract updateUser(userId: string, user: UpdateUserDto): Promise<User>;
     abstract deleteUser(userId: string): Promise<void>;
     abstract findByEmail(email: string): Promise<User | null>;
+    abstract getUsersByRole(role: 'admin' | 'user'): Promise<User[]>;
 }

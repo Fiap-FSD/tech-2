@@ -10,11 +10,15 @@ export class UserMongooseRepository implements UserRepository {
         @InjectModel(User.name) private userModel: Model<User>,
     ){}
 
-    getAllUsers(): Promise<User[]> {
+    async getAllUsers(): Promise<User[]> {
         return this.userModel.find().exec();
     }
 
-    getUserById(userId: string): Promise<User> {
+    async getUsersByRole(role: 'admin' | 'user'): Promise<User[]> {
+        return this.userModel.find({ role }).exec();
+    }
+
+    async getUserById(userId: string): Promise<User> {
         return this.userModel.findById(userId).exec();
     }
 
