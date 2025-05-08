@@ -21,6 +21,7 @@ const createPostSchema = z.object({
 type CreatePost = z.infer<typeof createPostSchema>;
 
 @UseInterceptors(LoggingInterceptor)
+@UseGuards(AuthGuard)
 @Controller('post')
 export class PostController{
     constructor(
@@ -85,7 +86,6 @@ export class PostController{
     }
 
     @ApiBearerAuth()
-    @UseGuards(AuthGuard)
     @UsePipes(new ZodValidationPipe(createPostSchema))
     @Post()
     @ApiBody({
@@ -101,7 +101,6 @@ export class PostController{
     }
     
     @ApiBearerAuth()
-    @UseGuards(AuthGuard)
     @Put(':postId')
     @ApiBody({
         description: 'Postagem de exemplo para ser editado.',
@@ -127,7 +126,6 @@ export class PostController{
     }
 
     @ApiBearerAuth()
-    @UseGuards(AuthGuard)
     @Delete(':postId')
     @ApiResponse({
         status: 200,
